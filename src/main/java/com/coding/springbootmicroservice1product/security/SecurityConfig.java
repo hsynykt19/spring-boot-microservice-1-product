@@ -22,18 +22,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     {
 
         PasswordEncoder encoder = new BCryptPasswordEncoder();
-       auth.inMemoryAuthentication()
-                       .passwordEncoder(encoder)
-               .withUser(SECURE_KEY_USERNAME)
-               .password(encoder.encode(SECURE_KEY_PASSWORD))//clear-text is not secure...
-               .roles("USER");
+        auth.inMemoryAuthentication()
+                .passwordEncoder(encoder)
+                .withUser(SECURE_KEY_USERNAME)
+                .password(encoder.encode(SECURE_KEY_PASSWORD))//clear-text is not secure...
+                .roles("USER");
     }
     @Override
     protected void  configure(HttpSecurity http)throws  Exception {
         super.configure(http);
         http.csrf().disable();
-    
+
     }
-           
-    
+
+
 }
